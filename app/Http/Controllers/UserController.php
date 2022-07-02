@@ -19,9 +19,7 @@ class UserController extends Controller
 
         $user = $this->user->get();
 
-        return response()->json([
-            'users' => $user
-        ], 200);
+        return response()->json($user);
     }
 
     public function show($id){
@@ -33,6 +31,58 @@ class UserController extends Controller
                 'user' => $user
             ]);
         } catch (\Throwable $th) {
+            return $th->getMessage();
+        }
+    }
+
+    public function store(Request $request){
+
+        $data = $request->all();
+
+        try {
+            $user = $this->user->create($data);
+
+            return response()->json([
+                'message' => 'usuário cadastrado com sucesso',
+                'data' => $user
+            ]);
+
+        } catch (\Throwable $th) {
+            return $th->getMessage();
+        }
+    }
+
+    public function update(Request $request, $id){
+
+        try {
+            $data = $request->all();
+            $user = $this->user->findOrFail($id);
+
+            $user->update($data);
+
+            return response()->json([
+                'message' => 'user atualizado com sucesso',
+                'data' => $user
+            ]);
+
+        } catch (\Throwable $th) {
+            return $th->getMessage();
+        }
+
+    }
+
+    public function destroy($id){
+
+        try {
+            $user = $this->user->findOrFail($id);
+            $user->delete();
+
+            return response()->json([
+                'message' => 'Usuário deletado com sucesso'
+            ]);
+
+        } catch (\Throwable $th) {
+
             return $th->getMessage();
         }
     }
