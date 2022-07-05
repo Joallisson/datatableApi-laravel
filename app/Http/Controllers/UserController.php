@@ -40,6 +40,9 @@ class UserController extends Controller
         $data = $request->all();
 
         try {
+
+            $data["password"] = bcrypt($data["password"]);
+
             $user = $this->user->create($data);
 
             return response()->json([
