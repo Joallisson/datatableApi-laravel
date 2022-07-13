@@ -1,0 +1,13 @@
++--------+----------+---------------------+-----------------------------+------------------------------------------------------------+------------------------------------------+
+| Domain | Method   | URI                 | Name                        | Action                                                     | Middleware                               |
++--------+----------+---------------------+-----------------------------+------------------------------------------------------------+------------------------------------------+
+|        | GET|HEAD | /                   | generated::Wkmpzmx6sPcnDAly | Closure                                                    | web                                      |
+|        | GET|HEAD | api/user            | generated::O6dMHpSiPJWHPfnA | Closure                                                    | api                                      |
+|        |          |                     |                             |                                                            | App\Http\Middleware\Authenticate:sanctum |
+|        | GET|HEAD | api/users           | generated::XSaqPP7boHou25M4 | App\Http\Controllers\UserController@index                  | api                                      |
+|        | POST     | api/users           | generated::NGEotDvOfq74RWMf | App\Http\Controllers\UserController@store                  | api                                      |
+|        | GET|HEAD | api/users/{id}      | generated::dAhsR1ohGw5PJ3bJ | App\Http\Controllers\UserController@show                   | api                                      |
+|        | PUT      | api/users/{id}      | generated::TCtIRljY5hDbak6f | App\Http\Controllers\UserController@update                 | api                                      |
+|        | DELETE   | api/users/{id}      | generated::7MmqgFCrwsLTnep5 | App\Http\Controllers\UserController@destroy                | api                                      |
+|        | GET|HEAD | sanctum/csrf-cookie | generated::eUHer9MvkFlKVJkL | Laravel\Sanctum\Http\Controllers\CsrfCookieController@show | web                                      |
++--------+----------+---------------------+-----------------------------+------------------------------------------------------------+------------------------------------------+
